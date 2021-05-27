@@ -10,26 +10,31 @@ import android.view.View
 class CanvasView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null, defStyleAttr: Int = 0
 ) : View(context, attrs, defStyleAttr) {
-    var radius:Float = 100f
+    private var radius:Float = 100f
+    private val paint = Paint()
+    private val paint2 = Paint()
+
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
-        val paint: Paint = Paint()
-//        val color1: Color = Color().
-        val paint2: Paint = Paint()
+
+ //        Se configuran los estilos de pintado de cada Paint que usaremos
         paint.setColor(Color.argb(255,100,200,100))
         paint2.setColor(Color.DKGRAY)
         paint2.textSize = 30F
         paint2.textAlign = Paint.Align.CENTER
+
+//        Se define el tamaño máximo como el tamaño del ancho del dispositivo dividido entre 2
         val maxSize = width/2
         val circleRad = maxSize * (radius/300f)/1
 
-
+//        Se pinta el círculo usando los valores de circleRad y la Paint llamada paint
+//        Se dibuja el text que dice el radio con la paint2
         canvas?.drawCircle(width/2f,height/5f*3,circleRad,paint)
         canvas?.drawText("$radius m de radio",width/2f, height/5f*3, paint2)
 
-
     }
-    public fun setRadiusCircle(n : Double){
+
+    fun setRadiusCircle(n : Double){
         this.radius = n.toFloat()
     }
 }
