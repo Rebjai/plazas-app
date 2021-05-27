@@ -43,10 +43,9 @@ class MainActivity : AppCompatActivity() {
         }catch (error:NumberFormatException){
             txtResult.text = "Por favor introduzca un número entre 100 y 300"
         }
-
         return
-
     }
+
     fun validateInput(num: Double): Boolean {
             return !(num < 100 || num > 300)
     }
